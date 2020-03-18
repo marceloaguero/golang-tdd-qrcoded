@@ -8,11 +8,11 @@ import (
 func main() {
 	fmt.Println("Hello QR Code")
 
-	qrcode := GenerateQRCode("555-2358")
+	qrcode := GenerateQRCode("555-2368")
 	ioutil.WriteFile("qrcode.png", qrcode, 0644)
 }
 
-// GenerateQRCode returns the QR code corresponding to the string received
+// GenerateQRCode returns a QR code representing the string received
 func GenerateQRCode(code string) []byte {
 	return nil
 }
