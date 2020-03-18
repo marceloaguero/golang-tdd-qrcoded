@@ -1,6 +1,10 @@
 package main
 
-import "testing"
+import (
+	"bytes"
+	"image/png"
+	"testing"
+)
 
 func TestGenerateQRCodeReturnsValue(t *testing.T) {
 	result := GenerateQRCode("555-2368")
@@ -11,5 +15,14 @@ func TestGenerateQRCodeReturnsValue(t *testing.T) {
 
 	if len(result) == 0 {
 		t.Errorf("Generated QRCode has no data")
+	}
+}
+
+func TestGenerateQRCodeGeneratesPNG(t *testing.T) {
+	result := GenerateQRCode("555-2369")
+	buffer := bytes.NewBuffer(result)
+	_, err := png.Decode(buffer)
+	if err != nil {
+		t.Errorf("Generated QR Code is not a png: %s", err)
 	}
 }

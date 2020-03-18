@@ -1,7 +1,10 @@
 package main
 
 import (
+	"bytes"
 	"fmt"
+	"image"
+	"image/png"
 	"io/ioutil"
 )
 
@@ -14,5 +17,9 @@ func main() {
 
 // GenerateQRCode returns a QR code representing the string received
 func GenerateQRCode(code string) []byte {
-	return nil
+	img := image.NewNRGBA(image.Rect(0, 0, 21, 21))
+	buf := new(bytes.Buffer)
+	_ = png.Encode(buf, img)
+
+	return buf.Bytes()
 }
