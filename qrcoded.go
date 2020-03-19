@@ -30,8 +30,10 @@ func GenerateQRCode(w io.Writer, code string, version Version) error {
 	return png.Encode(w, img)
 }
 
+// Version indicates the QR code version
 type Version int8
 
+// PatternSize calculates the QR code size depending on QR version
 func (v Version) PatternSize() int {
 	return 4*int(v) + 17
 }
